@@ -8,14 +8,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
+// 引入路由
+import { BrowserRouter } from 'react-router-dom';
+
 // 应用根组件，渲染APP组件到页面
 // ReactDOM.render(<App/>, document.getElementById('root'))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

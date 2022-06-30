@@ -83,12 +83,18 @@ th {
   text-align: left;
 }
 
+/* 自定义的额外样式 */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-#root {
+#root{
+  height: 100%;
+  width: 100%;
+}
+
+.App{
   height: 100%;
   width: 100%;
 }
