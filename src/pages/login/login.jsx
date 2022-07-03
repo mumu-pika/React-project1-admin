@@ -1,5 +1,4 @@
 import React from 'react'
-
 // 引入login登录页样式
 import './login.less'
 
@@ -8,17 +7,48 @@ import './login.less'
 
 // 引入antd相关资源
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, message } from 'antd';
 
+// 引入api
+import { reqLogin } from '../../api'
 
+// 引入路由hook
+import { useNavigate } from 'react-router-dom'
 
+// 引入内存管理js
+import memoryUtils from '../../utils/memoryUtils.js'
 
 
 // 登录的组件
-export default function Login() {
+export default function Login(props) {
+  // 应用useNavigate实现一般组件的前进后退
+  const navigate = useNavigate()
+
   // onFinish 提交表单且数据验证成功后回调事件
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
+    // 请求登录
     console.log('Received values of form: ', values);
+    const { username, password } = values
+    const response = await reqLogin(username, password)
+    const result = response.data  // {status: 0, data: {...}}
+    // 根据登录请求的返回数据的标识status来判断
+    if (result.status == 0) {
+      // 提示登录成功
+      message.success("登录成功")
+
+      // 保存用户信息
+      const user = result.data
+      memoryUtils.user = user
+      // 登录成功后,跳转页面(登录完毕不用回退登录页所以用replace)
+      navigate('/', {
+        replace: true,
+        // state: {a:1, b:2}
+      }) 
+    }
+    else {
+      // 提示登录失败
+      message.error(result.msg)
+    }
   }
 
   // onFinishFailed 提交表单且数据验证失败后回调事件
@@ -41,18 +71,18 @@ export default function Login() {
           initialValues={{
             remember: true,
           }}
-          onFinish = { onFinish }
-          onFinishFailed = { onFinishFailed }
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
         >
           {/* 输入用户名区域 */}
           <Form.Item
             name="username"
             // 声明式验证：直接使用别人定义的验证规则进行验证
             rules={[
-              { required: true, message: 'Please input your Username.'},
-              { min: 4, message: 'Username must be at least 4 characters!'},
-              { max: 12, message: 'Username can be up to 12 characters!'},
-              { pattern: /^[a-zA-Z0-9_]+$/, message: 'Username must be numbers, letters or underline!'},
+              { required: true, message: 'Please input your Username.' },
+              { min: 4, message: 'Username must be at least 4 characters!' },
+              { max: 12, message: 'Username can be up to 12 characters!' },
+              { pattern: /^[a-zA-Z0-9_]+$/, message: 'Username must be numbers, letters or underline!' },
             ]}
           >
             {/* prefix是带有前缀图标的 input */}
@@ -66,8 +96,8 @@ export default function Login() {
               {
                 // 自定义校验
                 // 这里value是输入的值
-                validator: (_, value) =>{
-                  return Login.checkPassword(value) ? Promise.resolve() : Promise.reject(new Error('Password should be > 6 digits and < 12 digits.'))
+                validator: (_, value) => {
+                  return Login.checkPassword(value) ? Promise.resolve() : Promise.reject(new Error('Password should be > 3 digits and < 12 digits.'))
                 }
               },
             ]}
@@ -103,12 +133,11 @@ export default function Login() {
 }
 
 // 自定义校验密码的规则
-Login.checkPassword = function(value){
+Login.checkPassword = function (value) {
   // 判断输入密码的值是否符合条件
-  if(!value || value.length < 6 || value.length > 12) return false
+  if (!value || value.length < 4 || value.length > 12) return false
   else return true
 }
-
 
 
 /* 
@@ -121,4 +150,3 @@ Login.checkPassword = function(value){
       * 必须是英文、数字或下划线组成
   2、收集表单数据
 */
-
