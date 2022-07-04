@@ -1,67 +1,85 @@
 // 菜单列表
+
+// 引入antd相应的图标
+import {
+  HomeOutlined,
+  ShopOutlined,
+  HddOutlined,
+  GiftOutlined,
+  TeamOutlined,
+  UsbOutlined,
+  ApartmentOutlined,
+  BuildOutlined,
+  ForkOutlined,
+  SmileOutlined,
+  BookOutlined,
+} from '@ant-design/icons';
+
+
+
 const menuList = [
   {
-    title: '首页', // 菜单标题名称
+    label: '首页', // 菜单标题名称
     key: '/home', // 对应的path
-    icon: 'home', // 图标名称
-    isPublic: true, // 公开的
+    icon: <HomeOutlined />, // 图标名称
+    // isPublic: true, // 公开的
   },
   {
-    title: '商品',
+    label: '商品',
     key: '/products',
-    icon: 'appstore',
+    icon: <ShopOutlined />,
     children: [ // 子菜单列表
       {
-        title: '品类管理',
+        label: '品类管理',
         key: '/category',
-        icon: 'bars'
+        icon: <HddOutlined />
       },
       {
-        title: '商品管理',
+        label: '商品管理',
         key: '/product',
-        icon: 'tool'
+        icon: <GiftOutlined />
       },
     ]
   },
 
   {
-    title: '用户管理',
+    label: '用户管理',
     key: '/user',
-    icon: 'user'
+    icon: <TeamOutlined />
   },
   {
-    title: '角色管理',
+    label: '角色管理',
     key: '/role',
-    icon: 'safety',
+    icon: <UsbOutlined />
   },
 
   {
-    title: '图形图表',
+    label: '图形图表',
     key: '/charts',
-    icon: 'area-chart',
+    icon: <ApartmentOutlined />,
     children: [
       {
-        title: '柱形图',
+        label: '柱形图',
         key: '/charts/bar',
-        icon: 'bar-chart'
+        icon: <BuildOutlined />
       },
       {
-        title: '折线图',
+        label: '折线图',
         key: '/charts/line',
-        icon: 'line-chart'
+        icon: <ForkOutlined />
       },
       {
-        title: '饼图',
+        label: '饼图',
         key: '/charts/pie',
-        icon: 'pie-chart'
+        icon: <SmileOutlined />
       },
     ]
   },
 
   {
-    title: '订单管理',
+    label: '订单管理',
     key: '/order',
-    icon: 'windows',
+    icon: <BookOutlined />
   },
 ]
 

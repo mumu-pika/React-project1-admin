@@ -1,0 +1,15 @@
+.left-nav .left-nav-header {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+}
+.left-nav .left-nav-header img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: auto 0.5rem;
+}
+.left-nav .left-nav-header h1 {
+  font-size: 1.2rem;
+  margin: auto 1rem;
+  color: white;
+}

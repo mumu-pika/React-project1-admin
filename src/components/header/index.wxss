@@ -1,0 +1,46 @@
+.header {
+  height: 5rem;
+  background-color: #fff;
+}
+.header .header-top {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding-right: 2.5rem;
+  text-align: right;
+  border-bottom: 1px solid #1da57a;
+}
+.header .header-top span {
+  margin-right: 1rem;
+}
+.header .header-bottom {
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.header .header-bottom .header-bottom-left {
+  position: relative;
+  width: 25%;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.header .header-bottom .header-bottom-left::after {
+  content: '';
+  position: absolute;
+  right: 50%;
+  top: 100%;
+  transform: translateX(50%);
+  border-top: 1rem solid white;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-left: 1rem solid transparent;
+}
+.header .header-bottom .header-bottom-right {
+  width: 75%;
+  text-align: right;
+  margin-right: 30px;
+}
+.header .header-bottom .header-bottom-right img {
+  margin: 0 1rem;
+  width: 2rem;
+  height: 1.2rem;
+}

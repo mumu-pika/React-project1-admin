@@ -6,17 +6,30 @@ import './login.less'
 // import logo from './images/logo.png'
 
 // 引入antd相关资源
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, message } from 'antd';
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { Button, Checkbox, Form, Input, message } from 'antd'
 
 // 引入api
 import { reqLogin } from '../../api'
 
 // 引入路由hook
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 // 引入内存管理js
 import memoryUtils from '../../utils/memoryUtils.js'
+
+// 引入本地存储js
+import storageUtils from '../../utils/storageUtils'
+
+
+// 判断用户是否已经登录
+// 如果内存没有存储user => 当前没有登陆
+function isLogin() {
+  let user = memoryUtils.user
+  console.log("@@@@", user)
+  if (user && user._id) return true
+  else return false
+}
 
 
 // 登录的组件
@@ -32,13 +45,15 @@ export default function Login(props) {
     const response = await reqLogin(username, password)
     const result = response.data  // {status: 0, data: {...}}
     // 根据登录请求的返回数据的标识status来判断
-    if (result.status == 0) {
+    if (result.status === 0) {
       // 提示登录成功
       message.success("登录成功")
 
       // 保存用户信息
       const user = result.data
-      memoryUtils.user = user
+      memoryUtils.user = user // 保存在内存
+      storageUtils.saveUser(user) // 保存在local中
+
       // 登录成功后,跳转页面(登录完毕不用回退登录页所以用replace)
       navigate('/', {
         replace: true,
@@ -57,9 +72,10 @@ export default function Login(props) {
   }
 
   return (
+    !isLogin() ?
     <div className='login'>
       <header className='login-header'>
-        <img src={require('./images/logo.png')} alt="logo" />
+        <img src={require('../../assets/images/logo.png')} alt="logo" />
         <h1>快乐花园后台管理</h1>
       </header>
       <section className='login-content'>
@@ -114,7 +130,7 @@ export default function Login(props) {
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
-            <a className="login-form-forgot" href="">
+            <a className="login-form-forgot" href="https://www.baidu.com">
               Forgot password
             </a>
           </Form.Item>
@@ -124,11 +140,12 @@ export default function Login(props) {
               Log in
             </Button>
             {/* 注册界面跳转 */}
-            Or <a href="">register now!</a>
+            Or <a href="https://www.baidu.com">register now!</a>
           </Form.Item>
         </Form>
       </section>
     </div>
+    : <Navigate to ='/' replace = {true} />
   )
 }
 
