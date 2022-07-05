@@ -35,9 +35,9 @@ const Home = () => {
 		<div className='home'>
 			<div className="home-top">
 				<Card title="商品总量" style={{ width: 250 }} extra={<QuestionCircleOutlined />} className="home-statistic">
-					<Statistic value={112893} suffix={'个'}></Statistic>
+					<Statistic value={9999} suffix={'个'}></Statistic>
 					<Statistic
-						value={15}
+						value={10}
 						precision={2}
 						suffix={
 							<div>
@@ -48,7 +48,7 @@ const Home = () => {
 						prefix="周同比"
 					></Statistic>
 					<Statistic
-						value={16}
+						value={5}
 						precision={2}
 						suffix={
 							<div>
@@ -69,7 +69,7 @@ const Home = () => {
 				tabBarExtraContent={
 					<DatePicker.RangePicker
 						size="large"
-						defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
+						defaultValue={[moment('2021/01/01', dateFormat), moment('2021/01/01', dateFormat)]}
 						format={dateFormat}
 					/>
 				}
@@ -83,10 +83,10 @@ const Home = () => {
 					</Card>
 					<Card title="任务" className="home-timeline">
 						<Timeline>
-							<Timeline.Item>Create a services site 2015-09-01</Timeline.Item>
-							<Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>
-							<Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
-							<Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>
+							<Timeline.Item>开启时空之旅 2021-12-02</Timeline.Item>
+							<Timeline.Item>标记不同的宝藏点 2021-12-02</Timeline.Item>
+							<Timeline.Item>技术分享与探索 2021-12-02</Timeline.Item>
+							<Timeline.Item>新的未来展望 2021-12-02</Timeline.Item>
 						</Timeline>
 					</Card>
 				</div>

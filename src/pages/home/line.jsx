@@ -12,37 +12,37 @@ const data = [
       {
         month: "Jan",
         city: "a",
-        temperature: 7
+        temperature: 12
       },
       {
         month: "Jan",
         city: "b",
-        temperature: 3.9
+        temperature: 9.8
       },
       {
         month: "Jan",
         city: "c",
-        temperature: 4.9
+        temperature: 6.4
       },
       {
         month: "Feb",
         city: "a",
-        temperature: 6.9
+        temperature: 2.5
       },
       {
         month: "Feb",
         city: "b",
-        temperature: 4.2
+        temperature: 7.8
       },
       {
         month: "Feb",
         city: "c",
-        temperature: 5.2
+        temperature: 6.9
       },
       {
         month: "Mar",
         city: "a",
-        temperature: 9.5
+        temperature: 9.1
       },
       {
         month: "Mar",
@@ -62,7 +62,7 @@ const data = [
       {
         month: "Apr",
         city: "b",
-        temperature: 8.5
+        temperature: 11.2
       },
       {
         month: "Apr",
@@ -82,7 +82,7 @@ const data = [
       {
         month: "May",
         city: "c",
-        temperature: 13.9
+        temperature: 14.8
       },
       {
         month: "Jun",
