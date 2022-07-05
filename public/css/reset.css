@@ -24,6 +24,7 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
+  -webkit-padding-start:0;
 }
 
 h1,
@@ -98,3 +99,4 @@ html, body {
   height: 100%;
   width: 100%;
 }
+

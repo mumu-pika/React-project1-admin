@@ -24,6 +24,7 @@ function isLogin() {
 }
 
 export default function Admin() {
+
   // 应用useNavigate实现一般组件的前进后退
   return (
     isLogin() ?

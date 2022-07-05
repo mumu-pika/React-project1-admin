@@ -4,7 +4,11 @@
 */
 
 // 引入自定义封装的ajax请求
+import { message } from 'antd'
 import ajax from './ajax'
+
+// 引入jsonp
+// import jsonp from 'jsonp'
 
 // 登录
 // export function reqLogin(username, password) {
@@ -21,3 +25,34 @@ export const reqLogin = (username, password) => ajax('/api1/login', {username, p
 
 // 添加用户 add user
 export const reqAddUser = (user) => ajax('/api1/manage/user/add', user, 'POST')
+
+
+/* 
+  jsonp请求的接口请求函数
+
+*/
+// jsonp(url, opts, fn(err,data))
+// export const reqWeather = () => {
+//   const url = 'https://api.map.baidu.com/weather/v1/?district_id=310115&data_type=all&ak=klVvEurDMNgrfPCh9WPI3uCPZsZvDGAu'
+//   jsonp(url, (err, data) => {
+//     console.log('jsonp', err, data)
+//   })
+// }
+
+// reqWeather()
+
+export const reqWeather = (district_id, data_type, ak) => ajax('/api2', {district_id, data_type, ak}, 'GET')
+
+// console.log(reqWeather(310115, 'all', 'klVvEurDMNgrfPCh9WPI3uCPZsZvDGAu'))
+
+// reqWeather(310115, 'all', 'klVvEurDMNgrfPCh9WPI3uCPZsZvDGAu').then( response => {
+//   // 请求返回数据成功
+//   if (response.data.status === 0){
+//     // 获取今日天气情况
+//     const weather = response.data.result.now.text
+//   }
+//   // 请求返回数据失败
+//   else {
+//     message.error('获取用户信息失败')
+//   }
+// })

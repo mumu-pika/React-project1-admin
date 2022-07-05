@@ -1,0 +1,29 @@
+.home {
+  width: 100%;
+}
+.home .home-top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 400px;
+}
+.home .home-top .home-line {
+  padding: 20px;
+  flex: 5;
+}
+.home .home-top .home-statistic {
+  flex: 2;
+  padding: 20px;
+}
+.home .home-bottom {
+  display: flex;
+  justify-content: space-between;
+  height: 600px;
+}
+.home .home-bottom .home-bar {
+  flex: 3;
+  padding: 60px;
+}
+.home .home-bottom .home-timeline {
+  flex: 2;
+}
