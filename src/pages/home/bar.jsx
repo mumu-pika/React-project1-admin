@@ -16,7 +16,7 @@ const Bar = () => {
     { year: ' 十月', sales: 20 },
     { year: ' 十一月', sales: 10 },
     { year: ' 十二月', sales: 40 },
-   
+
   ];
 
 	return (
