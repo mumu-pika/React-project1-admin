@@ -1,4 +1,6 @@
 ### 项目描述
+ [![OSCS Status](https://www.oscs1024.com/platform/badge/mumu-pika/React-project1-admin.svg?size=small)](https://www.oscs1024.com/project/mumu-pika/React-project1-admin?ref=badge_small)
+
 这是一个使用React框架搭建的后台管理系统（前端界面）。
 
 后端使用的是一个本地Node + Express + Mongodb 的数据库接口获取数据。(调用接口的实践)
