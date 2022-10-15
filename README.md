@@ -5,7 +5,7 @@
 
 后端使用的是一个本地Node + Express + Mongodb 的数据库接口获取数据。(调用接口的实践)
 
-学习测试用，由于后台数据库数据丢失，等之后考虑springboot等技术搭建后台。
+学习测试用，后台数据库数据Mongodb需要另外配置 ，等之后考虑springboot等技术搭建后台。
 
 ### 技术栈
 React + Antd + Axio + Bizcharts + Webpack打包等技术。

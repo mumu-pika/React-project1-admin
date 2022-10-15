@@ -26,7 +26,6 @@ import storageUtils from '../../utils/storageUtils'
 // 如果内存没有存储user => 当前没有登陆
 function isLogin() {
   let user = memoryUtils.user
-  console.log("@@@@", user)
   if (user && user._id) return true
   else return false
 }
@@ -58,7 +57,7 @@ export default function Login(props) {
       navigate('/', {
         replace: true,
         // state: {a:1, b:2}
-      }) 
+      })
     }
     else {
       // 提示登录失败
@@ -73,79 +72,79 @@ export default function Login(props) {
 
   return (
     !isLogin() ?
-    <div className='login'>
-      <header className='login-header'>
-        <img src={require('../../assets/images/logo.png')} alt="logo" />
-        <h1>快乐花园后台管理</h1>
-      </header>
-      <section className='login-content'>
-        <h2>用户登录</h2>
-        {/* 整个登录表单区域 */}
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          {/* 输入用户名区域 */}
-          <Form.Item
-            name="username"
-            // 声明式验证：直接使用别人定义的验证规则进行验证
-            rules={[
-              { required: true, message: 'Please input your Username.' },
-              { min: 4, message: 'Username must be at least 4 characters!' },
-              { max: 12, message: 'Username can be up to 12 characters!' },
-              { pattern: /^[a-zA-Z0-9_]+$/, message: 'Username must be numbers, letters or underline!' },
-            ]}
+      <div className='login'>
+        <header className='login-header'>
+          <img src={require('../../assets/images/logo.png')} alt="logo" />
+          <h1>快乐花园后台管理</h1>
+        </header>
+        <section className='login-content'>
+          <h2>用户登录</h2>
+          {/* 整个登录表单区域 */}
+          <Form
+            name="normal_login"
+            className="login-form"
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
           >
-            {/* prefix是带有前缀图标的 input */}
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-          </Form.Item>
-          {/* 输入密码区域 */}
-          <Form.Item
-            name="password"
-            // 表单校验的规则
-            rules={[
-              {
-                // 自定义校验
-                // 这里value是输入的值
-                validator: (_, value) => {
-                  return Login.checkPassword(value) ? Promise.resolve() : Promise.reject(new Error('Password should be > 3 digits and < 12 digits.'))
-                }
-              },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          {/* 记住我以及忘记密码区域 */}
-          <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
+            {/* 输入用户名区域 */}
+            <Form.Item
+              name="username"
+              // 声明式验证：直接使用别人定义的验证规则进行验证
+              rules={[
+                { required: true, message: 'Please input your Username.' },
+                { min: 4, message: 'Username must be at least 4 characters!' },
+                { max: 12, message: 'Username can be up to 12 characters!' },
+                { pattern: /^[a-zA-Z0-9_]+$/, message: 'Username must be numbers, letters or underline!' },
+              ]}
+            >
+              {/* prefix是带有前缀图标的 input */}
+              <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
             </Form.Item>
+            {/* 输入密码区域 */}
+            <Form.Item
+              name="password"
+              // 表单校验的规则
+              rules={[
+                {
+                  // 自定义校验
+                  // 这里value是输入的值
+                  validator: (_, value) => {
+                    return Login.checkPassword(value) ? Promise.resolve() : Promise.reject(new Error('Password should be > 3 digits and < 12 digits.'))
+                  }
+                },
+              ]}
+            >
+              <Input
+                prefix={<LockOutlined className="site-form-item-icon" />}
+                type="password"
+                placeholder="Password"
+              />
+            </Form.Item>
+            {/* 记住我以及忘记密码区域 */}
+            <Form.Item>
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
 
-            <a className="login-form-forgot" href="https://www.baidu.com">
-              Forgot password
-            </a>
-          </Form.Item>
-          {/* 提交按钮区域 */}
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
-            </Button>
-            {/* 注册界面跳转 */}
-            Or <a href="https://www.baidu.com">register now!</a>
-          </Form.Item>
-        </Form>
-      </section>
-    </div>
-    : <Navigate to ='/' replace = {true} />
+              <a className="login-form-forgot" href="https://www.baidu.com">
+                Forgot password
+              </a>
+            </Form.Item>
+            {/* 提交按钮区域 */}
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="login-form-button">
+                Log in
+              </Button>
+              {/* 注册界面跳转 */}
+              Or <a href="https://www.baidu.com">register now!</a>
+            </Form.Item>
+          </Form>
+        </section>
+      </div>
+      : <Navigate to='/' replace={true} />
   )
 }
 
